@@ -89,3 +89,98 @@ function greet(name: string): void {
 function noReturnValue(): void {
   // this function does not return a value (implicitly return undefined)
 }
+
+// never
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+function infiniteLoop(): never {
+  while (true) {
+    // this function never exits
+  }
+}
+
+// union type -> value of multiple value
+let myVar: string | number;
+myVar = "hello";
+console.log(myVar);
+myVar = 42;
+console.log(myVar);
+
+// literal type -> only take a specific value
+let direction: "left" | "right" | "up" | "down";
+
+function setColor(color: "red" | "blue" | "green") {}
+
+// nullable type  -> either any type or null
+
+let username: string | null = "glitch";
+let age: number | null = null;
+
+function greetUser(username: string | null) {
+  if (username === null) {
+    console.log(`Hello Guest!`);
+  } else {
+    console.log(`Hello, ${username}`);
+  }
+}
+greetUser("A man");
+greetUser(null);
+
+// type alias
+
+type MySting = string;
+let myName: MySting = "Samsa";
+type MyStringOrNumber = string | number;
+let myValue: MyStringOrNumber = 10;
+
+type Employee = {
+  name: string;
+  age: number;
+  email?: string;
+};
+
+const alice: Employee = {
+  name: "Alice",
+  age: 30,
+  email: "alice@gmail.com",
+};
+const bob: Employee = {
+  name: "bob",
+  age: 56,
+};
+console.log(alice);
+console.log(bob);
+
+// intersection type -> combine multiple types into one
+
+type FirstType = {
+  name: string;
+  age: number;
+};
+type SecondType = {
+  address: string;
+  phone: string;
+};
+type CombineType = FirstType & SecondType;
+const person1: CombineType = {
+  name: "jhon",
+  age: 30,
+  address: "dfas 1231",
+  phone: "123-456-7890",
+};
+
+// arrays
+
+let num: number[] = [1, 2, 3];
+for (let i = 0; i < num.length; i++) {
+  console.log(`Numbers${num[i]}`);
+}
+
+// multi dimensional array
+let arrayOne: number[] = [1, 2, 3, 4, 5];
+let arrayTwo: string[] = ["a", "bn"];
+let arrayThree: (string | number)[] = [1, 2, 3, "b"];
+
+// tuples -> similar to array with fix number of elements
